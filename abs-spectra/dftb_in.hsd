@@ -1,0 +1,43 @@
+Geometry = GenFormat {
+    <<< "benzene.gen"
+}
+
+Driver = {}
+
+Hamiltonian = DFTB {
+    SCC = Yes
+    SCCTolerance = 1e-10  # Very tight for test purposes only
+    MaxAngularMomentum = {
+        C = "p"
+        H = "s"
+    }
+    Filling = Fermi {
+        Temperature [Kelvin] = 1000.0
+    }
+    SlaterKosterFiles = Type2FileNames {
+        Prefix = "/home/niranjan/mio-1-1/"
+        Separator = "-"
+        Suffix = ".skf"
+    }
+}
+
+Options {
+    WriteAutotestTag = Yes
+}
+
+Analysis {
+    WriteEigenvectors = Yes
+    EigenvectorsAsTxt = Yes
+}
+
+ExcitedState {
+    Casida {
+        NrOfExcitations = 10
+        StateOfInterest = 0
+        Symmetry = Singlet
+    }
+}
+
+ParserOptions {
+    ParserVersion = 5
+}

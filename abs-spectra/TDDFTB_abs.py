@@ -39,7 +39,7 @@ wav = hc/eV
 sigma_nm = hc/sigma #nm
 
 #ADJUST THIS ACCORDING TO THE WAVELENGTH RANGE ONE IS INTERESTED IN
-lam = np.arange(100,1400,1)
+lam = np.arange(100.,1400.,1.)
 
 E=np.empty(len(lam))
 
@@ -53,6 +53,8 @@ for i in range(len(wav)):
 #PLOTTING ABSORPTION SPECTRUM IN EV
 lam_eV = hc/lam
 plt.plot(lam_eV,E)
+plt.xlabel('Energy (eV)');
+plt.ylabel('Absorbance (arb. units)');
 
 #SAVING RESULTS TO A TEXT FILE
 DataOut = np.column_stack((lam_eV,E))
